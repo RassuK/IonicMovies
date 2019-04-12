@@ -16,7 +16,7 @@ export enum SearchType {
 })
 export class MovieService {
   url = 'http://www.omdbapi.com/';
-  apiKey = '47effefa'; // <-- Enter your own key here!
+  apiKey = '47effefa';
  
   /**
    * Constructor of the Service with Dependency Injection
@@ -30,10 +30,11 @@ export class MovieService {
   * 
   * @param {string} title Search Term
   * @param {SearchType} type movie, series, episode or empty
+  * @param {string} year
   * @returns Observable with the search results
   */
-  public searchData(title: string, type: SearchType): Observable<any> {
-    return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`).pipe(
+  public searchData(title: string, type: SearchType, year: string): Observable<any> {
+    return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&y=${year}&apikey=${this.apiKey}`).pipe(
       map(results => results['Search'])
     );
   }
