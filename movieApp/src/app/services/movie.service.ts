@@ -32,7 +32,7 @@ export class MovieService {
   * @param {SearchType} type movie, series, episode or empty
   * @returns Observable with the search results
   */
-  searchData(title: string, type: SearchType): Observable<any> {
+  public searchData(title: string, type: SearchType): Observable<any> {
     return this.http.get(`${this.url}?s=${encodeURI(title)}&type=${type}&apikey=${this.apiKey}`).pipe(
       map(results => results['Search'])
     );
